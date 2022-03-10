@@ -1,0 +1,12 @@
+#PS Add Replica Domain Controller using Powershelll
+#
+#If no DHCP server configured, statically assign IP and DNS using the below
+Get-NetIPConfiguration
+New-NetIPAddress -InterfaceIndex [#] -IPAddress [IP] -PrefixLength [#] -DefaultGateway [IP]
+Set-DNSClientServerAddress -InterfaceIndex [#] -ServerAddress [IP]
+#
+Add-computer -DomainName test.lab -Credential test\Administrator -Verbose -Restart -Force
+#
+Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
+#
+Install-ADDSDomainController -Domainname "test.lab" -InstallDns:$true -Credential (Get-Credential "test\Administrator")
