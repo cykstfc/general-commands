@@ -10,3 +10,9 @@ Add-computer -DomainName test.lab -Credential test\Administrator -Verbose -Resta
 Install-WindowsFeature AD-Domain-Services -IncludeManagementTools
 #
 Install-ADDSDomainController -Domainname "test.lab" -InstallDns:$true -Credential (Get-Credential "test\Administrator")
+#
+Get-ADReplicationConnection
+#
+Get-ADREplicationFailure -Target Server01,Server02
+#
+Get-ADReplicationPartnerMetadata -Target Server01
