@@ -16,3 +16,10 @@ Get-ADReplicationConnection
 Get-ADREplicationFailure -Target Server01,Server02
 #
 Get-ADReplicationPartnerMetadata -Target Server01
+#
+shift-f10
+Powershell
+set-exectuinpolicy bypass
+install-script get-windowsautopilotinfo
+get-windowsautopilotinfo.ps1 -online
+#
